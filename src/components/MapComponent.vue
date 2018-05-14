@@ -119,6 +119,8 @@ export default {
       this.setVehicleMarkers(null);
       api.getVehicles(data => {
         this.vehicles = data;
+        console.log(this.vehicles);
+
         this.createVehicleMarkers();
       }, this.vehicleModelFilter);
     }
@@ -153,7 +155,9 @@ export default {
       });
     },
     createVehicleMarkers: function() {
+      this.mapElements.vehicles = [];
       this.vehicles.forEach(vehicle => {
+        console.log('vehicle');
         const position = new google.maps.LatLng(
           vehicle.location.latitude,
           vehicle.location.longitude
