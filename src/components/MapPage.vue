@@ -2,7 +2,7 @@
   <v-container fluid :class="{'px-0': $vuetify.breakpoint.xsOnly }">  
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <map-component name="map"></map-component>
+        <map-component name="main"></map-component>
       </v-layout>
     </v-slide-y-transition>
   </v-container>

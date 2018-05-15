@@ -1,47 +1,35 @@
 <template>
-  <v-app>
+  <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
       fixed
       app
     >
-      <v-list dense>
-        <v-list-tile>
-          <v-list-tile-content class="title"></v-list-tile-content>
-          <v-list-tile-action @click.stop="drawer = !drawer">
-            <v-btn flat icon>
-              <v-icon>close</v-icon>
-            </v-btn>
-          </v-list-tile-action>
-        </v-list-tile>
-        <v-list-tile class="mt-3" @click='redirectPage("MapPage", "Mapa")'>
-          <v-list-tile-action>
-            <v-icon>map</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Mapa</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile @click='redirectPage("CustomPage", "Custom Page")'>
-          <v-list-tile-action>
-            <v-icon>contact_mail</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Custom Page</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+      <navigation-component></navigation-component>
+
     </v-navigation-drawer>
 
     <v-toolbar
       app
-      :clipped-left="clipped"
-      color="indigo" 
+      color="teal darken-4" 
       dark
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title v-text="title" ></v-toolbar-title>
+      <v-toolbar-title v-text="title" style="width: 150px"></v-toolbar-title>
+      <v-text-field
+        flat
+        solo-inverted
+        prepend-icon="search"
+        label="Search"
+        class="hidden-sm-and-down"
+      ></v-text-field>
       <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>apps</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>notifications</v-icon>
+      </v-btn>
       <v-btn icon 
              @click.stop="rightDrawer = !rightDrawer"
              v-if='title=="Mapa"'>
@@ -56,20 +44,21 @@
     </v-content>
 
     <v-navigation-drawer
-      temporary
       :right="right"
       v-model="rightDrawer"
       fixed
       app
     >
-     <filter-list-component></filter-list-component>   
+     <filters-component></filters-component>   
     </v-navigation-drawer>
+
   </v-app>
 </template>
 
 <script>
 import store from './store';
-import FilterListComponent from './components/FilterListComponent.vue';
+import NavigationComponent from './components/NavigationComponent.vue';
+import FiltersComponent from './components/FiltersComponent.vue';
 
 export default {
   data() {
@@ -102,12 +91,16 @@ export default {
     }
   },
   components: {
-    FilterListComponent
+    FiltersComponent,
+    NavigationComponent
   }
 };
 </script>
 
 <style>
+.map-info-window {
+  padding: 20px;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition-property: opacity;

@@ -1,48 +1,62 @@
 <template>
       <v-list>
-        <v-list-tile >
-          <!-- <v-list-tile-action @click.stop="rightDrawer = !rightDrawer">
-            <v-btn flat icon>
-              <v-icon>close</v-icon>
-            </v-btn>
-          </v-list-tile-action> -->
-          <v-list-tile-title class="title">Filtruj Obiekty</v-list-tile-title>
+        <v-list-tile> 
+          <v-list-tile-title class="title text-xs-center">Filtruj Obiekty</v-list-tile-title>
         </v-list-tile>
         <v-divider class="mt-2"></v-divider>        
-        <v-list-tile class="mt-3">
-            <v-checkbox
-              v-model="showZone"
-              label="Strefa dozwolona"
-              color="indigo"
-              hide-details
-              right
-            ></v-checkbox>
-        </v-list-tile>-
+
         <v-list-tile class="mt-2">
             <v-checkbox
               v-model="showVehicles"
               label="Pojazdy"
-              color="green"
+              color="green darken-2"
               hide-details
             ></v-checkbox>
-            <v-select
+           
+        </v-list-tile>
+        <v-list-tile class="mt-3" v-show="showVehicles">
+         <v-select
               :items="vehicleModels"
               v-model="selectedVehicleModel"
               label="Model pojazdu"
-              single-line
-              v-if="showVehicles"
+              
+              color="green darken-4"
             ></v-select>
         </v-list-tile>
-        <v-list-tile class="mt-2">
+        
+        <v-divider class="mt-2"></v-divider>        
+        
+         <v-list-tile class="mt-2">
             <v-checkbox
               v-model="showParkings"
               label="Parkingi"
-              color="blue"
+              color="blue darken-2"
               hide-details
             ></v-checkbox>
         </v-list-tile>
+
+
+        <v-list-tile class="mt-3">
+            <v-checkbox
+              v-model="showZone"
+              label="Strefa dozwolona"
+              color="deep-orange darken-3"
+              hide-details
+              right
+            ></v-checkbox>
+        </v-list-tile>
+
+       
+        <v-list-tile class="mt-2">
+            <v-checkbox
+              v-model="showPoi"
+              label="POI"
+              color="purple accent-4"
+              hide-details
+            ></v-checkbox>
+        </v-list-tile>
+
         <v-list-tile class="mt-2" v-if="false">
-          
           <v-subheader>Min. poziom baterii</v-subheader>
             <v-select
               :items="batteryLevels"
@@ -138,6 +152,14 @@ export default {
       },
       set(value) {
         this.$store.commit('updateZoneFilter', value);
+      }
+    },
+    showPoi: {
+      get() {
+        return this.$store.state.mapFilters.poiFilter;
+      },
+      set(value) {
+        this.$store.commit('updatePoiFilter', value);
       }
     },
     selectedVehicleModel: {

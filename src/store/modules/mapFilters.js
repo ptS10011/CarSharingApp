@@ -2,8 +2,8 @@ const state = {
   vehiclesFilter: true,
   parkingsFilter: true,
   zoneFilter: true,
+  poiFilter: true,
   vehicleModelFilter: '',
-  batteryFilter: 0
 }
 
 const mutations = {
@@ -17,11 +17,11 @@ const mutations = {
   updateZoneFilter(state, value) {
     state.zoneFilter = value;
   },
+  updatePoiFilter(state, value) {
+    state.poiFilter = value;
+  },
   updateVehicleModelFilter(state, value) {
     state.vehicleModelFilter = value;
-  },
-  updateBatteryFilter(state, value) {
-    state.batteryFilter = value;
   }
 }
 
