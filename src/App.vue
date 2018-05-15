@@ -99,7 +99,7 @@ export default {
 
 <style>
 .map-info-window {
-  padding: 20px;
+  padding: 10px;
 }
 .fade-enter-active,
 .fade-leave-active {

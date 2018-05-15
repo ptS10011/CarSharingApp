@@ -27,7 +27,6 @@
               <v-flex xs4 class="pl-4 info-window-element">
                 <h5 class="mb-0 grey--text">NUMER BOCZNY</h5>
                 <div>{{car.sideNumber}}</div>
-
               </v-flex>
               <v-flex xs4 class="pl-4 info-window-element">
                 <h5 class="mb-0 grey--text">KOLOR</h5>
@@ -206,7 +205,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .google-map {
   position: absolute;
   top: 0;

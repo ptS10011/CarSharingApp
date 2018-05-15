@@ -39,12 +39,17 @@ class VehicleElement {
     createInfoWindow(map, marker, poiElement) {
 
         var contentString = `
+        <div class="map-info-window">
             <div class="map-info-window">
-                <h2>${poiElement.name}</h2>
-                <br>
-                <p>${poiElement.description}</p>
-               
+            <div style='float:left;' >
+                <img src="https://raw.githubusercontent.com/ptS10011/CarSharingApp/master/src/assets/icons/poi_icon.png">
             </div>
+            <div style="margin-left: 70px;">
+                <h2>${poiElement.name}</h2>
+                <p>${poiElement.description}</p>
+                <p><i>${poiElement.category}</i></p>
+            </div>
+        </div>
         `
 
         var infowindow = new google.maps.InfoWindow({

@@ -40,15 +40,18 @@ class ParkingElement {
 
         var contentString = `
             <div class="map-info-window">
+                <div style='float:left;' >
+                    <img src="https://raw.githubusercontent.com/ptS10011/CarSharingApp/master/src/assets/icons/parking_icon.png">
+                </div>
+                <div style="margin-left: 70px;">
                 <h2>${parking.name}</h2>
                 <p>${parking.description}</p>
                 <p>
-                Liczba miejsc:  <b>${parking.spacesCount}</b>
-                </p>
-                <p>
+                <br>
+                Liczba miejsc:  <b>${parking.spacesCount}</b> <br>
                 Liczba wolnych miejsc:  <b>${parking.availableSpacesCount}</b>
                 </p>
-                
+                </div>
             </div>
         `
 
