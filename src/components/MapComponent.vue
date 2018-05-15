@@ -20,11 +20,34 @@
           </v-card-title>
 
             <v-layout row wrap>
+              <v-flex xs12 class="pb-3">
+                <v-divider></v-divider>
+              </v-flex>
+
+              <v-flex xs4 class="pl-4 info-window-element">
+                <h5 class="mb-0 grey--text">NUMER BOCZNY</h5>
+                <div>{{car.sideNumber}}</div>
+
+              </v-flex>
+              <v-flex xs4 class="pl-4 info-window-element">
+                <h5 class="mb-0 grey--text">KOLOR</h5>
+                <div>{{car.color}}</div>
+              </v-flex>
+              <v-flex xs4 class="pl-2 info-window-element">
+                <h5 class="mb-0 grey--text">REJESTRACJA</h5>
+                <div>{{car.platesNumber}}</div>
+              </v-flex>
+
+              <v-flex xs12 class="pt-3 pb-3">
+                <v-divider></v-divider>
+              </v-flex>
+
+
               <v-flex xs6 px-3 mb-3>
-                <v-btn color="indigo" darken-4 large dark block round @click="bookCar">Rezerwuj</v-btn>
+                <v-btn color="blue darken-3" large dark block  round @click="bookCar">Rezerwuj</v-btn>
               </v-flex>
               <v-flex xs6 px-3  mb-3>
-                <v-btn  color="green" darken-4 large dark block round @click="rentCar">Wypożycz</v-btn>
+                <v-btn  color="green darken-3"  large dark block round @click="rentCar">Wypożycz</v-btn>
               </v-flex>
             </v-layout>
               
@@ -72,6 +95,9 @@ export default {
       car: {
         name: '',
         range: '',
+        color: '',
+        sideNumber: '',
+        platesNumber: '',
         url:
           'https://api-client-portal.vozilla.pl//attachments/d5619a4f-48e9-4eb0-a93e-2ca788b47c2c'
       }
@@ -157,6 +183,11 @@ export default {
       this.$refs.infoWindowActivator.$el.click();
       this.car.name = vehicle.name;
       this.car.range = vehicle.rangeKm;
+      this.car.color = vehicle.color;
+      console.log(vehicle.color);
+
+      this.car.sideNumber = vehicle.sideNumber;
+      this.car.platesNumber = vehicle.platesNumber;
     },
     centerMarker: function(latitude, longitude) {
       this.mapManager.getMap().setZoom(16);
@@ -186,5 +217,9 @@ export default {
 
 .bottom-sheet--inset .card {
   border-radius: 15px 15px 0 0;
+}
+
+.info-window-element {
+  text-transform: uppercase;
 }
 </style>
